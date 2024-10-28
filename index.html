@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
@@ -20,18 +27,64 @@
     <title>Chuyển văn bản thành giọng nói</title>
   </head>
   <body>
-    <h1>Ứng dụng chuyển văn bản thành giọng nói</h1>
-    <textarea
-      id="text"
-      rows="10"
-      cols="50"
-      placeholder="Nhập văn bản tại đây..."
-    ></textarea
-    ><br />
-    <button id="speakButton">Đọc</button>
-    <br /><br />
-    <audio id="audioPlayer" controls></audio>
+    <div class="container">
+      <h1>Ứng dụng chuyển văn bản thành giọng nói</h1>
+      <div class="row">
+        <div class="col-8">
+          <textarea
+            id="text"
+            rows="10"
+            cols="50"
+            placeholder="Nhập văn bản tại đây..."
+          ></textarea
+          ><br />
 
+          <div class="right">
+            <input
+              type="range"
+              id="speechRate"
+              name="speechRate"
+              min="-10"
+              max="10"
+              value="0"
+              step="1"
+              oninput="updateRateLabel(this.value)"
+            />
+
+            <span id="rateValue">0</span>
+            <button id="speakButton">Đọc</button>
+            <br /><br />
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Chon Quoc gia</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+
+          <div class="row">
+            <div class="col-6 border border-secondary-subtle">vietnam</div>
+            <div class="col-6 border border-secondary-subtle">vietnam</div>
+            <div class="col-6 border border-secondary-subtle">vietnam</div>
+            <div class="col-6 border border-secondary-subtle">vietnam</div>
+            <div class="col-6 border border-secondary-subtle">vietnam</div>
+            <div class="col-6 border border-secondary-subtle">vietnam</div>
+            <div class="col-6 border border-secondary-subtle">vietnam</div>
+          </div>
+        </div>
+      </div>
+      <!-- <audio id="audioPlayer" controls></audio> -->
+    </div>
+
+    <div class="audio" id="audioContainer">
+      <audio class="audio__content" id="audioPlayer" controls></audio>
+      <i class="audio__icon fa-solid fa-download"></i>
+    </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
   </body>
